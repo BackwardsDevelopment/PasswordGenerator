@@ -1,4 +1,4 @@
 @echo off
 setlocal
-set "SCRIPT=%~main.py"
+set "SCRIPT=%~dp0main.py"
 python "%SCRIPT%" %*

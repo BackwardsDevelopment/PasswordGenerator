@@ -49,11 +49,14 @@ def str2bool(v):
         raise argparse.ArgumentTypeError('Boolean value expected.')
 
 parser = argparse.ArgumentParser(description="Generate a Randomly generated password")
-parser.add_argument('-l', '--length', type=int, help='The Length the Password should be.')
+parser.add_argument('-l', '--length', type=int, default=16, help='The Length the Password should be.')
 parser.add_argument('-s', '--specialChars', type=str2bool, default=False, help='Whether to include special characters.')
+parser.add_argument('-t', '--totalPasswords', type=int, default=1, help="The number of passwords to generate")
 
 args = parser.parse_args()
 
-print(args)
-
-print(generateString(args.length, args.specialChars))
+if args.totalPasswords > 1:
+    for passwordNum in range(args.totalPasswords):
+        print(f"{passwordNum+1}: {generateString(args.length, args.specialChars)}")
+else:
+    print(generateString(args.length, args.specialChars))
