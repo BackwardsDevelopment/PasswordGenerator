@@ -6,9 +6,7 @@ This is a simple command-line tool coded in Python.
 
 1. Make sure the provided files are unzipped and are all contained in the same file (preferably titled "gen-password").
 2. In Environment Variables add the location to the file you just created. (The Folder not anything within.)
-3. Its ready to go, in CMD run [ `gen-password <number of items to convert>` ] and it will output the stack sizes needed, including the amount of non-stack items needed.  
-
-NOTE: Whatever the file name is will be what the command is assuming you followed the instructions properly.
+3. Its ready to go, in CMD run [ `genpass <number of items to convert>` ] and it will output the stack sizes needed, including the amount of non-stack items needed.  
 
 ## Contributions
 
