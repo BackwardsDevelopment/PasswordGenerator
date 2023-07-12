@@ -2,13 +2,16 @@
 
 This is a simple command-line tool coded in Python.
 
+## Requirements
+
+Python 3.11.3 - Should be in the PATH environment variable.  
+Click [Here](https://gist.github.com/nex3/c395b2f8fd4b02068be37c961301caa7) for the installation process.
+
 ## How to use
 
 1. Make sure the provided files are unzipped and are all contained in the same file (preferably titled "gen-password").
 2. In Environment Variables add the location to the file you just created. (The Folder not anything within.)
-3. Its ready to go, in CMD run [ `gen-password <number of items to convert>` ] and it will output the stack sizes needed, including the amount of non-stack items needed.  
-
-NOTE: Whatever the file name is will be what the command is assuming you followed the instructions properly.
+3. Its ready to go, in CMD run [ `genpass <number of items to convert>` ] and it will output the stack sizes needed, including the amount of non-stack items needed.  
 
 ## Contributions
 
