@@ -60,16 +60,6 @@ def generateString(length, spec):
                 out += letters[math.floor(random.random()*len(letters))].upper()
     return out
 
-def str2bool(v):
-    if isinstance(v, bool):
-        return v
-    if v.lower() in ('yes', 'true', 't', 'y', '1'):
-        return True
-    elif v.lower() in ('no', 'false', 'f', 'n', '0'):
-        return False
-    else:
-        raise argparse.ArgumentTypeError('Boolean value expected.')
-
 parser = argparse.ArgumentParser(description="Generate a Randomly generated password")
 parser.add_argument('-l', '--length', type=int, default=16, help='The Length the Password should be.')
 parser.add_argument('-s', '--specialChars', action="store_true", help='Whether to include special characters.')
