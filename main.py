@@ -60,6 +60,16 @@ def generateString(length, spec):
                 out += letters[math.floor(random.random()*len(letters))].upper()
     return out
 
+def main(total, length, spec, useOld):
+    out = []
+    for index in range(total):
+        if (useOld):
+            print("Depreciation Warning.\nWhile using the old generation process is possible, it isn't recommended.")
+            out.append(depreciatedGenerateString(length, spec))
+        else:
+            out.append(generateString(length, spec))
+    return out
+
 parser = argparse.ArgumentParser(description="Generate a Randomly generated password")
 parser.add_argument('-l', '--length', type=int, default=16, help='The Length the Password should be.')
 parser.add_argument('-s', '--specialChars', action="store_true", help='Whether to include special characters.')
@@ -68,16 +78,10 @@ parser.add_argument('-o', '--old', action="store_true", help="Use the old method
 
 args = parser.parse_args()
 
-if args.totalPasswords > 1:
-    for passwordNum in range(args.totalPasswords):
-        if (args.old == True):
-            print("Depreciation Warning.\nWhile using the old generation process is possible, it isn't recommended.")
-            print(f"{passwordNum+1}: {depreciatedGenerateString(args.length, args.specialChars)}")
-        else:
-            print(f"{passwordNum+1}: {generateString(args.length, args.specialChars)}")
+passwords = main(args.totalPasswords, args.length, args.specialChars, args.old)
+
+if len(passwords) > 1:
+    for index in range(passwords.__len__):
+        print(f"{index+1}: {passwords[index]}")
 else:
-    if(args.old == True):
-        print("Depreciation Warning.\nWhile using the old generation process is possible, it isn't recommended.")
-        print(depreciatedGenerateString(args.length, args.specialChars))
-    else:
-        print(generateString(args.length, args.specialChars))
+    print(passwords[0])
