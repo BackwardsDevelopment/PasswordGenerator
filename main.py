@@ -23,7 +23,7 @@ numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
 special_chars = ['!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '-', '_', '+', '=', '[', ']', '{', '}', '|', '\\', ';', ':', "'", '"', ',', '<', '.', '>', '/', '?']
 
 
-def generateString(length, spec):
+def depreciatedGenerateString(length, spec):
     out = ""
     for pos in range(length):
         if random.random() > .75 and spec:
@@ -38,6 +38,28 @@ def generateString(length, spec):
                     out += letters[math.floor(random.random()*len(letters))].lower()
     return out
 
+def generateString(length, spec):
+    out = ""
+    for pos in range(length):
+        charType = random.random()
+        if spec:
+            if charType < .25:
+                out += special_chars[math.floor(random.random()*len(special_chars))]
+            elif charType < .5:
+                out += numbers[math.floor(random.random()*len(numbers))]
+            elif charType < .75:
+                out += letters[math.floor(random.random()*len(letters))].lower()
+            elif charType < 1:
+                out += letters[math.floor(random.random()*len(letters))].upper()
+        else:
+            if charType < .33:
+                out += numbers[math.floor(random.random()*len(numbers))]
+            elif charType < .66:
+                out += letters[math.floor(random.random()*len(letters))].lower()
+            elif charType < 1:
+                out += letters[math.floor(random.random()*len(letters))].upper()
+    return out
+
 def str2bool(v):
     if isinstance(v, bool):
         return v
@@ -50,13 +72,21 @@ def str2bool(v):
 
 parser = argparse.ArgumentParser(description="Generate a Randomly generated password")
 parser.add_argument('-l', '--length', type=int, default=16, help='The Length the Password should be.')
-parser.add_argument('-s', '--specialChars', type=str2bool, default=False, help='Whether to include special characters.')
+parser.add_argument('-s', '--specialChars', action="store_true", help='Whether to include special characters.')
 parser.add_argument('-t', '--totalPasswords', type=int, default=1, help="The number of passwords to generate")
+parser.add_argument('-o', '--old', action="store_true", help="Use the old method to generate a string")
 
 args = parser.parse_args()
 
 if args.totalPasswords > 1:
+    print("Depreciation Warning.\nWhile using the old generation process is possible, it isn't recommended.")
     for passwordNum in range(args.totalPasswords):
-        print(f"{passwordNum+1}: {generateString(args.length, args.specialChars)}")
+        if (args.old == True):
+            print(f"{passwordNum+1}: {depreciatedGenerateString(args.length, args.specialChars)}")
+        else:
+            print(f"{passwordNum+1}: {generateString(args.length, args.specialChars)}")
 else:
-    print(generateString(args.length, args.specialChars))
+    if(args.old == True):
+        print(depreciatedGenerateString(args.length, args.specialChars))
+    else:
+        print(generateString(args.length, args.specialChars))
