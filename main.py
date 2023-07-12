@@ -79,14 +79,15 @@ parser.add_argument('-o', '--old', action="store_true", help="Use the old method
 args = parser.parse_args()
 
 if args.totalPasswords > 1:
-    print("Depreciation Warning.\nWhile using the old generation process is possible, it isn't recommended.")
     for passwordNum in range(args.totalPasswords):
         if (args.old == True):
+            print("Depreciation Warning.\nWhile using the old generation process is possible, it isn't recommended.")
             print(f"{passwordNum+1}: {depreciatedGenerateString(args.length, args.specialChars)}")
         else:
             print(f"{passwordNum+1}: {generateString(args.length, args.specialChars)}")
 else:
     if(args.old == True):
+        print("Depreciation Warning.\nWhile using the old generation process is possible, it isn't recommended.")
         print(depreciatedGenerateString(args.length, args.specialChars))
     else:
         print(generateString(args.length, args.specialChars))
