@@ -25,7 +25,7 @@ special_chars = ['!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '-', '_', '+'
 
 def depreciatedGenerateString(length, spec):
     out = ""
-    for pos in range(length):
+    for _ in range(length):
         if random.random() > .75 and spec:
             out += special_chars[math.floor(random.random()*len(special_chars))]
         else:
@@ -40,7 +40,7 @@ def depreciatedGenerateString(length, spec):
 
 def generateString(length, spec):
     out = ""
-    for pos in range(length):
+    for _ in range(length):
         charType = random.random()
         if spec:
             if charType < .25:
@@ -62,7 +62,7 @@ def generateString(length, spec):
 
 def main(total, length, spec, useOld):
     out = []
-    for index in range(total):
+    for _ in range(total):
         if (useOld):
             print("Depreciation Warning.\nWhile using the old generation process is possible, it isn't recommended.")
             out.append(depreciatedGenerateString(length, spec))
