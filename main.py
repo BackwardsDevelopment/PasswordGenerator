@@ -81,7 +81,7 @@ args = parser.parse_args()
 passwords = main(args.totalPasswords, args.length, args.specialChars, args.old)
 
 if len(passwords) > 1:
-    for index in range(passwords.__len__):
-        print(f"{index+1}: {passwords[index]}")
+    for index, passwd in enumerate(passwords):
+        print(f"{index+1}: {passwd}")
 else:
     print(passwords[0])
