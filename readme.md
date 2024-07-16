@@ -1,6 +1,8 @@
-# Password Generator
+﻿# Password Generator
 
 This is a simple command-line tool coded in Python.
+This applcation currently only works on Windows.
+A Fix is being worked on.
 
 ## Requirements
 
